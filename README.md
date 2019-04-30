@@ -5,8 +5,6 @@
 ## Build Setup
 
 ``` bash
-# NPM
-npm install --save vue-lottie-web
 
 # use component
 import Lottie from 'vue-lottie-web'
