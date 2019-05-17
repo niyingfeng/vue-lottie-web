@@ -2,9 +2,13 @@
 
 > a vue component for lottie-web
 
-## Demo Build Setup
+## Demo Show
+
+show Demo in local:
 
 ```
+git clone git@github.com:niyingfeng/vue-lottie-web.git
+
 npm install
 
 npm run dev
@@ -12,26 +16,86 @@ npm run dev
 
 ## Component use
 
+Install through npm:
+
+```
+npm install --save vue-lottie-web
+```
+
 ``` bash
-
 # use component
-import Lottie from 'vue-lottie-web'
+<template>
+    <div id="app">
+        <p class="pBtn">
+            <span @click="lottiePlay">开始</span>
+            <span @click="lottieRePlay">再一次</span>
+            <span @click="lottiePause">暂停</span>
+            <span @click="lottieStop">停止</span>
+        </p>
+        <Lottie
+            className="animation"
+            renderer="canvas"
+            :loop="false"
+            :autoplay="false"
+            :animationData=lottieData
 
-<Lottie
-    className="animation" // to wapper dom class
+            @getLottieInstance=getLottieInstance
+            @onEnterFrame=onEnterFrame
+            @onComplete=onComplete
+            @onLoopComplete=onLoopComplete
+        />
+    </div>
+</template>
 
-    renderer="canvas | svg | html"
-    :loop=boolean
-    :autoplay=boolean
-    :animationData=lottieData
-    :path=lottieDataFilePath
+<script>
+import Lottie from 'vue-lottie-web';
+import lottieData from './data.json';
 
-    @getLottieInstance=getLottieInstance // get the lottie instence in parent component
+export default {
+    components: {
+        Lottie
+    },
+    data() {
+        return {
+            lottieData,
+            lottieInstance: ''
+        };
+    },
 
-    @onEnterFrame=onEnterFrame  // bind events
-    @onComplete=onComplete
-    @onLoopComplete=onLoopComplete
-/>
+    methods: {
+        getLottieInstance(lottieInstance) {
+            this.lottieInstance = lottieInstance;
+
+            console.log(lottieInstance)
+        },
+        lottiePlay() {
+            this.lottieInstance && this.lottieInstance.play();
+        },
+        lottieRePlay() {
+            this.lottieInstance && this.lottieInstance.stop();
+            setTimeout(() => {
+                this.lottieInstance.play();
+            });
+        },
+        lottiePause() {
+            this.lottieInstance && this.lottieInstance.pause();
+        },
+        lottieStop() {
+            this.lottieInstance && this.lottieInstance.stop();
+        },
+        onComplete(e) {
+            console.log('onComplete', e);
+        },
+        onLoopComplete(e) {
+            console.log('onLoopComplete', e);
+        },
+        onEnterFrame(e) {
+            // console.log('onEnterFrame', e);
+        }
+    }
+};
+</script>
+
 
 ```
 
