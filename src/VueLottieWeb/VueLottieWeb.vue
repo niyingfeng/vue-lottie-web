@@ -6,6 +6,7 @@
 import lottie from 'lottie-web';
 
 export default {
+    name: "vue-lottie-web",
     data() {
         return {
             instance: false

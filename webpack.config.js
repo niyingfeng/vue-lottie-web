@@ -8,8 +8,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
-        filename: 'vueLotttieWeb.js',
-        library: 'vueLotttieWeb', // 指定的就是你使用require时的模块名
+        filename: 'vueLottieWeb.js',
+        library: 'vue-lottie-web', // 指定的就是你使用require时的模块名
         libraryTarget: 'umd',
         umdNamedDefine: true
     },

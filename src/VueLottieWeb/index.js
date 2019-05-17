@@ -6,4 +6,8 @@ import Lottie from './VueLottieWeb';
 //注册组件
 Lottie.install = Vue => Vue.component(Lottie.name, Lottie);
 
+if (typeof window !== 'undefined' && window.Vue) {
+    Vue.use(Lottie);
+}
+
 export default Lottie;

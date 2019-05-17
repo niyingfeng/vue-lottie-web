@@ -2,7 +2,15 @@
 
 > a vue component for lottie-web
 
-## Build Setup
+## Demo Build Setup
+
+```
+npm install
+
+npm run dev
+```
+
+## Component use
 
 ``` bash
 
